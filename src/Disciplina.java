@@ -19,19 +19,19 @@ public class Disciplina {
     }
 
     public void cadastraNota(int nota, double valorNota) {
-        notas[nota] = valorNota;
+        notas[nota-1] = valorNota;
     }
 
     private double calculaMedia() {
         double soma = 0;
         for (double n: notas){
-            soma = soma + n;
+            soma += n;
         }
         return soma/4;
     }
 
     public boolean aprovado() {
-        if (this.calculaMedia() > media){
+        if (this.calculaMedia() >= media){
             return true;
         }
         else{
@@ -40,7 +40,7 @@ public class Disciplina {
     }
 
     public String toString() {
-        return "- Discplina:"+nomeDisciplina+"/n- Horas de estudo:"+ horasDeEstudo +"/n- Média:" + this.calculaMedia()+"/n- Notas:" + Arrays.toString(notas);
+        return "- Discplina:"+nomeDisciplina+"\n- Horas de estudo:"+ horasDeEstudo +"\n- Média:" + this.calculaMedia()+"\n- Notas:" + Arrays.toString(notas);
     }
 
 }
