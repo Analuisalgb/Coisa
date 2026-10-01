@@ -17,7 +17,7 @@ public class RegistroTempoOnline {
     }
 
     public void adicionaTempoOnline(int horas) {
-        tempoOnline = horas;
+        tempoOnline += horas;
     }
 
     public boolean atingiuMetaTempoOnline() {
@@ -30,7 +30,7 @@ public class RegistroTempoOnline {
     }
 
     public String toString() {
-        return "- Discplina:"+nomeDisciplina+"/n- Tempo online:"+ tempoOnline +"/n- Meta de tempo online:" + tempoOnlineEsperado;
+        return nomeDisciplina+ " " + tempoOnline +"/" + tempoOnlineEsperado;
     }
 
 }

@@ -1,52 +1,41 @@
+import java.awt.*;
 import java.util.Arrays;
 
 public class RegistroResumos {
-
-    private class Resumo{
-        private String tema;
-        private String conteudo;
-
-        public Resumo(String tema, String conteudo) {
-            this.tema = tema;
-            this.conteudo = conteudo;
-        }
-        private String pegaTema(){
-            return tema;
-        }
-        private String pegaConteudo(){
-            return conteudo;
-        }
-    }
-
 
     private Resumo[] resumos;
 
     private int ocupados;
 
-
+    private int max;
 
     public RegistroResumos(int numeroDeResumos) {
-        Resumo[] resumos = new Resumo[numeroDeResumos];
+        max = (int) (numeroDeResumos);
+        this.resumos = new Resumo[max];
         ocupados = 0;
+
     }
 
     public void adiciona(String tema, String conteudo) {
         Resumo r = new Resumo(tema,conteudo);
         if (temResumo(tema) == false){
-        if (ocupados < resumos.length){
-            resumos[ocupados] = r;
-            ocupados = ocupados+1;
-        }
-        else {
-            resumos[0] = r;
-            ocupados = 1;
+            if (this.ocupados < this.max) {
+                this.resumos[ocupados] = r;
+                ocupados = ocupados + 1;
+            } else {
+                resumos[0] = r;
+                ocupados = 1;
         }
         }
 
     }
 
-    public Resumos[] pegaResumos() {
-        return resumos;
+    public String[] pegaResumos() {
+        String[] resumosPego = new String[ocupados];
+        for (int e = 0; e < ocupados; e++){
+            resumosPego[e] = resumos[e].toString();
+        }
+        return resumosPego;
     }
 
     public int conta() {
@@ -54,16 +43,26 @@ public class RegistroResumos {
     }
 
     public String imprimeResumos() {
-
+        String out = "- "+ ocupados+ " resumo(s) cadastrado(s)\n"+"- ";
+        for (int o = 0; o < ocupados; o++ ){
+            if (o < ocupados-1) {
+                out += resumos[o].pegaTema()+" | ";
+            }
+            else{
+                out += resumos[o].pegaTema();
+            }
+        }
+        return out;
     }
 
     public boolean temResumo(String tema) {
-        for(Resumo r: resumos){
-            if (r.pegaTema().equals(tema)){
+
+        for(int i = 0; i < ocupados; i++ ){
+            if (resumos[i].pegaTema().equals(tema)) {
                 return true;
             }
-            return false;
         }
+        return false;
     }
 
 }
