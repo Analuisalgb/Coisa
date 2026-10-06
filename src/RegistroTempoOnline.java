@@ -21,16 +21,17 @@ public class RegistroTempoOnline {
     }
 
     public boolean atingiuMetaTempoOnline() {
-        if (tempoOnline < tempoOnlineEsperado){
-            return false;
+        // podera ser resumido para: return tempoOnline < tempoOnlineEsperado
+        return tempoOnline >= tempoOnlineEsperado;
         }
-        else{
-            return true;
-        }
-    }
+
 
     public String toString() {
         return nomeDisciplina+ " " + tempoOnline +"/" + tempoOnlineEsperado;
+    }
+
+    public int getTempoOnline() {
+        return tempoOnline;
     }
 
 }

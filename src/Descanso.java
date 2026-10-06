@@ -1,10 +1,12 @@
 public class Descanso {
 
-    private int horas = 0;
+    private int horas; // poderia ser inicializado no construtor
 
-    private int semana = 1;
+    private int semana; // poderia ser inicializado no construtor
 
     public Descanso() {
+        horas = 0;
+        semana = 1;
     }
 
     public void defineHorasDescanso(int horas) {

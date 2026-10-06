@@ -17,4 +17,18 @@ public class Resumo{
     public String toString(){
         return this.tema + ": " + this.conteudo;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){
+            return false;
+        }
+        if (obj instanceof Resumo){
+            Resumo objResumo = (Resumo) obj;
+            if (objResumo.pegaTema().equals(this.tema)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -6,12 +6,14 @@ public class Disciplina {
 
     private int horasDeEstudo;
 
-    private double media = 7.0;
+    private double media; // poderia inserir esses valores dentro do construtor
 
-    private double[] notas = {0,0,0,0};
+    private double[] notas; // poderia inserir esses valores dentro do construtor
 
     public Disciplina(String nomeDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
+        media = 7.0;
+        notas = new double[]{0, 0, 0, 0};
     }
 
     public void cadastraHoras(int horas) {
@@ -31,16 +33,12 @@ public class Disciplina {
     }
 
     public boolean aprovado() {
-        if (this.calculaMedia() >= media){
-            return true;
-        }
-        else{
-            return false;
-        }
+        // poderia ser só: return calculaMedia() >= media;
+        return this.calculaMedia() >= media;
     }
 
     public String toString() {
-        return "- Discplina:"+nomeDisciplina+"\n- Horas de estudo:"+ horasDeEstudo +"\n- Média:" + this.calculaMedia()+"\n- Notas:" + Arrays.toString(notas);
+        return nomeDisciplina+" "+ horasDeEstudo +" " + this.calculaMedia() +" " + Arrays.toString(notas);
     }
 
 }
