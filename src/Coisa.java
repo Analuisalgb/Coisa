@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Coisa {
     public static void main(String[] args) {
         registrarDescanso();
@@ -44,12 +46,28 @@ public class Coisa {
         prog2.cadastraNota(4, 10.0);
         System.out.println(prog2.aprovado());
         System.out.println(prog2.toString());
+        Disciplina lp2 = new Disciplina("LP2", 2);
+        lp2.cadastraNota(1,10);
+        System.out.println(lp2.aprovado());
+        lp2.cadastraNota(2,7.5);
+        System.out.println(lp2.aprovado());
+        int[] pesos = new int[]{7,3,7,3,10};
+        Disciplina fmcc = new Disciplina("Fmcc", 5, pesos);
+        fmcc.cadastraNota(1,10);
+        fmcc.cadastraNota(2,10);
+        System.out.println(fmcc.aprovado());
+        fmcc.cadastraNota(3,10);
+        fmcc.cadastraNota(4,10);
+        System.out.println(fmcc.aprovado());
+        fmcc.cadastraNota(5,10);
+        System.out.println(fmcc.aprovado());
+
     }
     private static void registrarResumos() {
         RegistroResumos meusResumos = new RegistroResumos(3);  // 100 resumos
 
-        meusResumos.adiciona("Classes", "Classes definem um tipo e a base de código para criação de objetos.");
         meusResumos.adiciona("Tipo", "Identifica a semântica (operações e significados) de um conjunto de dados.");
+        meusResumos.adiciona("Classes", "Classes definem um tipo e a base de código para criação de objetos.");
 
         String[] resumos = meusResumos.pegaResumos();
 
@@ -63,5 +81,8 @@ public class Coisa {
         System.out.println(meusResumos.imprimeResumos());
         System.out.println(meusResumos.temResumo("Classes"));
         System.out.println(meusResumos.temResumo("Objetos"));
+
+        String[] busca = meusResumos.busca("um");
+        System.out.println(Arrays.toString(busca));
     }
 }

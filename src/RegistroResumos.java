@@ -1,5 +1,5 @@
 import java.awt.*;
-import java.util.Arrays;
+import java.util.*;
 
 public class RegistroResumos {
 
@@ -73,5 +73,16 @@ public class RegistroResumos {
         }
         return false;
     }
-
+    public String[] busca (String chaveDeBusca){
+         String[] encontrados = new String[qntOcupados];
+         int iEncontrados = 0;
+        for(int i = 0; i < qntOcupados; i++ ){
+            if (resumos[i].pegaConteudo().contains(chaveDeBusca)){
+                encontrados[iEncontrados] = resumos[i].pegaTema();
+                iEncontrados += 1;
+            }
+        }
+        Arrays.sort(encontrados);
+        return encontrados;
+    }
 }
