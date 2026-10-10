@@ -1,17 +1,26 @@
 import java.awt.*;
 import java.util.*;
 
+/**
+ * A classe RegistroResumos foi feita para acompanhar os estudos apar-
+ * tir de um pequeno registro de resumos de estudos. Nela é possível
+ * inicializar um registro que armazenará uma quantidade limitada de
+ * resumos. Possui função de adicionar resumos, contar quantos resumos
+ * já foram registrados, retornar os resumos que estão nos registros
+ * e fazer sistemas de buscas dentro desses registros.
+ */
 public class RegistroResumos {
 
     private Resumo[] resumos;
 
     private int qntOcupados;
+
     private int iOcupados;
 
     private int max;
 
     public RegistroResumos(int numeroDeResumos) {
-        max = (int) (numeroDeResumos);
+        max = numeroDeResumos;
         this.resumos = new Resumo[max];
         qntOcupados = 0;
         iOcupados = 0;
@@ -77,7 +86,9 @@ public class RegistroResumos {
          String[] encontrados = new String[qntOcupados];
          int iEncontrados = 0;
         for(int i = 0; i < qntOcupados; i++ ){
-            if (resumos[i].pegaConteudo().contains(chaveDeBusca)){
+            String conteudoResumo = resumos[i].pegaConteudo().toLowerCase();
+            chaveDeBusca = chaveDeBusca.toLowerCase();
+            if (conteudoResumo.contains(chaveDeBusca)){
                 encontrados[iEncontrados] = resumos[i].pegaTema();
                 iEncontrados += 1;
             }
